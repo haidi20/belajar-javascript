@@ -1,5 +1,5 @@
 class User {
-  constructor(email, name){
+  constructor(email,name){
     this.email  = email;
     this.name   = name;
     this.score  = 0;
@@ -7,10 +7,12 @@ class User {
 
   login(){
     console.log(this.email, 'just logged in');
+    return this;
   }
 
   logout(){
-    console.log(this.email, 'just logged out');
+    console.log(this.name, 'just logged out');
+    return this;
   }
 
   updateScore(){
@@ -20,9 +22,20 @@ class User {
   }
 }
 
+class Admin extends User {
+  deleteUser(user){
+    users = users.filter(u => {
+      return u.email != user.email
+    });
+  }
+}
+
 var userOne = new User('haidi@gmail.com','haidi');
 var userTwo = new User('andi@gmail.com','andi');
+var admin   = new Admin('keren@gmail.com','keren');
 
-userOne.updateScore().updateScore().logout().login();
+var users = [userOne, userTwo, admin];
 
-console.log(userOne);
+userTwo.deleteUser(userOne); // won't work
+
+console.log(users);
