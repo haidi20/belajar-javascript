@@ -1,7 +1,7 @@
-const list  = document.querySelector('#book-list ul');
+const list = document.querySelector('#book-list ul');
 const forms = document.forms;
 
-// delete books
+//delete books
 list.addEventListener('click', (e) => {
   if (e.target.className == 'delete') {
     const li = e.target.parentElement;
@@ -9,9 +9,9 @@ list.addEventListener('click', (e) => {
   }
 });
 
-//add books
+// add books
 const addForm = forms['add-book'];
-addForm.addEventListener('submit',function(e){
+addForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
   // create elements
@@ -24,9 +24,12 @@ addForm.addEventListener('submit',function(e){
   bookName.textContent = value;
   deleteBtn.textContent = 'delete';
 
+  // add classes
+  bookName.classList.add('name');
+  deleteBtn.classList.add('delete');
+
   //append to DOM
   li.appendChild(bookName);
   li.appendChild(deleteBtn);
   list.appendChild(li);
-  // list.insertBefore(li, list.querySelector('li:first-child'));
 });
