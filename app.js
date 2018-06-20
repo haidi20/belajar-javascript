@@ -1,21 +1,20 @@
-var userOne = {
-  email: 'haidi@gmail.com',
-  name: 'haidi',
-  login(){
-    console.log(this.email, 'has logged in');
-  },
-  logout(){
-    console.log(this.email, 'has logged out');
+class User {
+  constructor(email, name){
+    this.email  = email;
+    this.name   = name;
   }
-};
 
-var prop = 'name'
+  login(){
+    console.log(this.email, 'just logged in');
+  }
 
-userOne.age = 25;
-userOne.logInfo = function () {
-  console.log(this.name, this.age, this.email);
+  logout(){
+    console.log(this.email, 'just logged out');
+  }
 }
 
-userOne.logInfo();
+var userOne = new User('haidi@gmail.com','haidi');
+var userTwo = new User('andi@gmail.com','andi');
+
 userOne.login();
-userOne.logout();
+userTwo.logout();
